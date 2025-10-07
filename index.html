@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ali & Co International — Dates, Nuts & Chocolates</title>
+    <meta
+      name="description"
+      content="Ali & Co International (Wandoor, Malappuram) imports and distributes premium dates, nuts, biscuits and chocolates across India. Request a quote: +91 94477 22378."
+    />
+    <meta name="theme-color" content="#5A3921" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        /* Colors */
+        --bg: #fff;
+        --surface: #fbf9f6;
+        --primary: #4b2e1f;
+        --accent: #d9ab4a;
+        --accent-hover: #c89a3f;
+        --muted: #6b6b6b;
+        --text: #1f1f1f;
+        --border: #f2f2f2;
+
+        /* Layout */
+        --container-width: min(1100px, 90%);
+        --radius: 12px;
+        --card-shadow: 0 6px 18px rgba(75, 46, 31, 0.08);
+
+        /* Spacing */
+        --space-xs: clamp(4px, 0.5vw, 6px);
+        --space-sm: clamp(8px, 1vw, 12px);
+        --space-md: clamp(16px, 2vw, 24px);
+        --space-lg: clamp(24px, 3vw, 32px);
+
+        /* Typography */
+        --font-sm: clamp(13px, 0.875rem, 14px);
+        --font-base: clamp(14px, 1rem, 16px);
+        --font-lg: clamp(18px, 1.25rem, 20px);
+        --font-xl: clamp(24px, 2rem, 32px);
+      } /* Base styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Inter, system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Layout utilities */
+      /* Responsive layout utilities */
+      .container {
+        width: 100%;
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 var(--space-md);
+      }
+
+      .flex {
+        display: flex;
+        align-items: center;
+      }
+
+      .flex-between {
+        justify-content: space-between;
+      }
+
+      .grid {
+        display: grid;
+        gap: var(--space-md);
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      }
+
+      /* Header styles */
+      .site-header {
+        background: linear-gradient(90deg, var(--surface), var(--bg));
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        padding: var(--space-sm) 0;
+      }
+
+      .site-header .container {
+        padding: 0 var(--space-md);
+        min-height: 48px;
+      }
+
+      .logo-text {
+        font-family: Poppins, sans-serif;
+        font-weight: 700;
+        color: var(--primary);
+        font-size: var(--font-lg);
+      }
+
+      .nav {
+        display: flex;
+        gap: var(--space-md);
+      }
+
+      @media (max-width: 640px) {
+        .nav {
+          gap: var(--space-sm);
+        }
+        .nav a.cta {
+          display: none;
+        }
+        .site-header .container {
+          justify-content: center;
+        }
+        .logo-text {
+          text-align: center;
+        }
+      }
+
+      .nav a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .nav a.cta {
+        background: var(--accent);
+        color: var(--bg);
+        padding: var(--space-sm) var(--space-md);
+        border-radius: var(--radius);
+        transition: background 0.2s ease;
+      }
+
+      .nav a.cta:hover {
+        background: var(--accent-hover);
+      }
+
+      .hero {
+        padding: 56px 20px;
+        background: linear-gradient(180deg, #fff 0%, var(--surface) 100%);
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .hero-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 18px;
+      }
+      .hero h1 {
+        font-family: Poppins;
+        font-size: 32px;
+        line-height: 1.05;
+        color: var(--primary);
+        margin: 0;
+      }
+      .hero p {
+        max-width: 800px;
+        color: var(--muted);
+        margin: 0;
+      }
+      .hero .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      /* Button styles */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-sm) var(--space-md);
+        border-radius: var(--radius);
+        font-weight: 600;
+        font-size: 14px;
+        min-width: 120px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(217, 171, 74, 0.3);
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .btn-primary:hover {
+        background: var(--accent-hover);
+      }
+
+      .btn-outline {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: transparent;
+      }
+
+      .btn-outline:hover {
+        background: var(--surface);
+      }
+
+      section.products {
+        padding: 44px 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+      .card {
+        background: #fff;
+        border-radius: var(--radius);
+        box-shadow: var(--card-shadow);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        transition: transform 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 640px) {
+        .card {
+          max-width: 100%;
+        }
+      }
+      .card-media {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+      }
+      .card-media::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.02) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      }
+      .card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+      .card:hover .card-media img {
+        transform: scale(1.05);
+      }
+      .card-body {
+        padding: 14px;
+      }
+      .card h3 {
+        margin: 0 0 8px;
+        color: var(--primary);
+        font-size: 16px;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      section.contact {
+        padding: 36px 0;
+        background: linear-gradient(180deg, var(--surface), #fff);
+      }
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      /* Form styles */
+      .form-group {
+        margin-bottom: var(--space-md);
+      }
+
+      label {
+        display: block;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: var(--space-xs);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: var(--space-sm) var(--space-md);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        font-size: 14px;
+        background: var(--surface);
+        transition: all 0.2s ease;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(217, 171, 74, 0.1);
+      }
+
+      .form-control:invalid:not(:placeholder-shown) {
+        border-color: crimson;
+      }
+
+      .form-control:valid:not(:placeholder-shown) {
+        border-color: #4caf50;
+      }
+
+      textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: var(--space-sm);
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: var(--space-lg);
+      }
+
+      .meta {
+        font-size: 13px;
+        color: var(--muted);
+        text-align: center;
+        margin-top: var(--space-sm);
+      }
+
+      .aside {
+        background: #fff;
+        border-radius: 12px;
+        padding: 16px;
+        border: 1px solid #f2f2f2;
+        box-shadow: var(--card-shadow);
+      }
+      .aside strong {
+        color: var(--primary);
+      }
+
+      footer {
+        padding: 30px 0;
+        border-top: 1px solid #eee;
+        background: #fff;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      /* Form responsive styles */
+      .form-row {
+        display: grid;
+        gap: var(--space-md);
+        margin-bottom: var(--space-md);
+      }
+
+      .form-group {
+        width: 100%;
+      }
+
+      /* Mobile padding adjustment */
+      @media (max-width: 640px) {
+        .contact {
+          padding: var(--space-md) 0;
+        }
+
+        .contact form {
+          margin-top: var(--space-md);
+          padding: var(--space-md);
+          border-radius: var(--radius);
+        }
+
+        [style*='grid-template-columns: 1fr 1fr'] {
+          grid-template-columns: 1fr !important;
+          gap: var(--space-sm);
+        }
+
+        .form-actions {
+          flex-direction: column;
+          gap: var(--space-sm);
+          margin-top: var(--space-md);
+        }
+
+        .form-actions .btn {
+          width: 100%;
+        }
+
+        .form-group {
+          margin-bottom: var(--space-md);
+        }
+
+        .hero {
+          padding: var(--space-lg) var(--space-sm);
+        }
+
+        input.form-control,
+        select.form-control,
+        textarea.form-control {
+          padding: 12px;
+          font-size: 16px;
+        }
+      }
+
+      /* Tablet and above */
+      @media (min-width: 641px) {
+        .form-row {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        [style*='grid-template-columns: 1fr 1fr'] {
+          grid-template-columns: 1fr !important;
+        }
+
+        .form-actions {
+          flex-direction: column;
+        }
+
+        .form-actions .btn {
+          width: 100%;
+          margin-bottom: 8px;
+        }
+
+        .hero {
+          padding: 32px 16px;
+        }
+
+        .container {
+          padding: 0 16px;
+        }
+
+        input,
+        select,
+        textarea {
+          font-size: 16px; /* Prevents iOS zoom */
+        }
+      }
+
+      @media (min-width: 900px) {
+        .contact-wrap {
+          grid-template-columns: 1fr 360px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container flex flex-between">
+        <div class="logo-text">Ali & Co International</div>
+        <nav class="nav">
+          <a class="cta" href="#contact">Request Quote</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <h1 id="hero-title">
+          Premium Dates, Nuts & Confectionery — Supplied Across India
+        </h1>
+        <p>
+          Premium imported products, supplied across India. Fast quotes,
+          reliable logistics, and flexible pack sizes for both retail and bulk
+          buyers.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Request a Quote</a>
+          <a class="btn btn-outline" href="tel:+919447722378"
+            >Call +91 94477 22378</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <div class="container">
+        <section class="products" id="products">
+          <h2
+            style="
+              text-align: center;
+              color: var(--primary);
+              margin: 0 0 8px;
+              font-family: Poppins;
+            "
+          >
+            Products
+          </h2>
+          <p style="text-align: center; color: var(--muted); margin: 0 0 20px">
+            Retail and wholesale supply across India. Small batches to pallet
+            loads.
+          </p>
+
+          <div class="grid" role="list">
+            <article class="card" role="listitem">
+              <div class="card-media">
+                <img src="/images/dates.jpg" alt="Premium Medjool Dates" />
+              </div>
+              <div class="card-body">
+                <h3>Dates</h3>
+                <p class="muted">
+                  Premium imported dates — suited for retail shelves, cafés,
+                  bakeries, and bulk supply across India.
+                </p>
+              </div>
+            </article>
+
+            <article class="card" role="listitem">
+              <div class="card-media">
+                <img
+                  src="https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="Premium Mixed Nuts"
+                />
+              </div>
+              <div class="card-body">
+                <h3>Nuts</h3>
+                <p class="muted">
+                  Cashews, almonds, pistachios, and walnuts — raw or roasted,
+                  available in retail and bulk. Custom mixes crafted to order.
+                </p>
+              </div>
+            </article>
+
+            <article class="card" role="listitem">
+              <div class="card-media">
+                <img
+                  src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1200&q=80"
+                  alt="Premium Biscuits and Cookies"
+                />
+              </div>
+              <div class="card-body">
+                <h3>Biscuits & Cookies</h3>
+                <p class="muted">
+                  Assorted branded biscuits and bakery cookies for retail
+                  shelves and hospitality suppliers.
+                </p>
+              </div>
+            </article>
+
+            <article class="card" role="listitem">
+              <div class="card-media">
+                <img
+                  src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=1200&q=80"
+                  alt="Premium Chocolate Selection"
+                />
+              </div>
+              <div class="card-body">
+                <h3>Chocolates</h3>
+                <p class="muted">
+                  Branded bars and bulk chocolate for confectioners;
+                  private-label packaging supported.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="contact" id="contact">
+          <div class="container">
+            <div
+              style="
+                max-width: min(600px, 95%);
+                margin: 0 auto;
+                padding: 0 var(--space-sm);
+              "
+            >
+              <h2
+                style="
+                  text-align: center;
+                  color: var(--primary);
+                  font-family: Poppins;
+                  font-size: var(--font-lg);
+                  margin-bottom: var(--space-sm);
+                "
+              >
+                Contact & Trade Enquiry
+              </h2>
+              <p
+                style="
+                  text-align: center;
+                  color: var(--muted);
+                  margin: 0;
+                  font-size: var(--font-base);
+                  line-height: 1.5;
+                "
+              >
+                Tell us quantities, pack sizes and your delivery city. We reply
+                within 24 business hours.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="contact-wrap"
+            style="display: flex; justify-content: center; margin-top: 32px"
+          >
+            <form
+              id="enquiryForm"
+              aria-label="Trade enquiry form"
+              style="
+                width: 100%;
+                max-width: min(600px, 95%);
+                padding: var(--space-md);
+                background: #fff;
+                border-radius: var(--radius);
+                box-shadow: var(--card-shadow);
+              "
+            >
+              <div
+                class="form-group"
+                style="
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: var(--space-md);
+                "
+              >
+                <div>
+                  <label for="name">Name *</label>
+                  <input
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Full name"
+                  />
+                </div>
+                <div>
+                  <label for="company">Company (optional)</label>
+                  <input
+                    class="form-control"
+                    id="company"
+                    name="company"
+                    placeholder="Company or shop"
+                  />
+                </div>
+              </div>
+
+              <div
+                class="form-group"
+                style="
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: var(--space-md);
+                "
+              >
+                <div>
+                  <label for="phone">Phone *</label>
+                  <input
+                    class="form-control"
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    pattern="[+]?[0-9]{10,13}"
+                    required
+                    placeholder="+91 94477 22378"
+                    title="Please enter a valid phone number"
+                  />
+                </div>
+                <div>
+                  <label for="email">Email *</label>
+                  <input
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="email@example.com"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: var(--space-md)">
+                <label for="product" style="margin-bottom: var(--space-xs)"
+                  >Product of interest</label
+                >
+                <select class="form-control" id="product" name="product">
+                  <option value="">— select —</option>
+                  <option>Dates</option>
+                  <option>Nuts</option>
+                  <option>Biscuits & Cookies</option>
+                  <option>Chocolates</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message / Order details *</label>
+                <textarea
+                  class="form-control"
+                  id="message"
+                  name="message"
+                  required
+                  placeholder="Quantity, pack sizes, delivery city..."
+                ></textarea>
+              </div>
+
+              <p
+                style="
+                  color: var(--muted);
+                  font-size: 13px;
+                  margin: 10px 0;
+                  text-align: center;
+                "
+              >
+                For trade orders, please include approximate quantities and
+                preferred delivery city to speed up our response.
+              </p>
+
+              <div class="form-actions" style="margin-top: 32px">
+                <button class="btn btn-primary" type="submit">
+                  Send Enquiry
+                </button>
+                <button class="btn btn-outline" type="button" id="resetBtn">
+                  Reset Form
+                </button>
+              </div>
+
+              <p
+                id="formMessage"
+                class="meta"
+                style="margin-top: 10px; text-align: center"
+              ></p>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <strong>Ali & Co International</strong><br />
+        18/291, PANOLAN BUILDING<br />
+        Nilambur Manjeri Bypass Road, Ambalappadi<br />
+        Wandoor, Malappuram, Kerala — 679328<br />
+        Email:
+        <a href="mailto:office@aliandcointl.com">office@aliandcointl.com</a> |
+        Phone: <a href="tel:+919447722378">+91 94477 22378</a>
+      </div>
+    </footer>
+
+    <script>
+      function submitForm(e) {
+        e.preventDefault();
+        const form = document.getElementById('enquiryForm');
+        const msg = document.getElementById('formMessage');
+        const name = form.name.value.trim();
+        const phone = form.phone.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+
+        // Reset previous error state
+        msg.textContent = '';
+
+        // Validation
+        if (!name || !phone || !email || !message) {
+          msg.textContent = 'Please fill in all required fields marked with *';
+          msg.style.color = 'crimson';
+          return;
+        }
+
+        // Email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          msg.textContent = 'Please enter a valid email address';
+          msg.style.color = 'crimson';
+          return;
+        }
+
+        // Phone validation (basic Indian format)
+        const phonePattern = /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/;
+        if (!phonePattern.test(phone.replace(/[\s\-]/g, ''))) {
+          msg.textContent = 'Please enter a valid Indian phone number';
+          msg.style.color = 'crimson';
+          return;
+        }
+
+        msg.style.color = 'var(--muted)';
+        msg.textContent = 'Sending...';
+
+        // Simulate form submission
+        setTimeout(() => {
+          msg.style.color = 'green';
+          msg.textContent =
+            'Thanks — enquiry received. We will reply within 24 business hours.';
+          form.reset();
+        }, 900);
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const resetBtn = document.getElementById('resetBtn');
+        const form = document.getElementById('enquiryForm');
+
+        if (resetBtn && form) {
+          resetBtn.addEventListener('click', function () {
+            form.reset();
+            document.getElementById('formMessage').textContent = '';
+          });
+        }
+
+        if (form) {
+          form.addEventListener('submit', submitForm);
+        }
+      });
+    </script>
+  </body>
+</html>
