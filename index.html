@@ -625,6 +625,11 @@
           >
             <form
               id="enquiryForm"
+              name="trade-enquiry"
+              method="POST"
+              action="/"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
               aria-label="Trade enquiry form"
               style="
                 width: 100%;
@@ -635,6 +640,15 @@
                 box-shadow: var(--card-shadow);
               "
             >
+              <!-- Netlify form name for backend -->
+              <input type="hidden" name="form-name" value="trade-enquiry" />
+              <!-- honeypot field -->
+              <p style="display: none">
+                <label
+                  >Don\'t fill this out if you're human:
+                  <input name="bot-field"
+                /></label>
+              </p>
               <div
                 class="form-group"
                 style="
@@ -768,7 +782,6 @@
 
     <script>
       function submitForm(e) {
-        e.preventDefault();
         const form = document.getElementById('enquiryForm');
         const msg = document.getElementById('formMessage');
         const name = form.name.value.trim();
@@ -781,6 +794,7 @@
 
         // Validation
         if (!name || !phone || !email || !message) {
+          e.preventDefault();
           msg.textContent = 'Please fill in all required fields marked with *';
           msg.style.color = 'crimson';
           return;
@@ -789,6 +803,7 @@
         // Email validation
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)) {
+          e.preventDefault();
           msg.textContent = 'Please enter a valid email address';
           msg.style.color = 'crimson';
           return;
@@ -797,21 +812,16 @@
         // Phone validation (basic Indian format)
         const phonePattern = /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/;
         if (!phonePattern.test(phone.replace(/[\s\-]/g, ''))) {
+          e.preventDefault();
           msg.textContent = 'Please enter a valid Indian phone number';
           msg.style.color = 'crimson';
           return;
         }
 
+        // Allow native submit to proceed so Netlify can capture the form
         msg.style.color = 'var(--muted)';
         msg.textContent = 'Sending...';
-
-        // Simulate form submission
-        setTimeout(() => {
-          msg.style.color = 'green';
-          msg.textContent =
-            'Thanks — enquiry received. We will reply within 24 business hours.';
-          form.reset();
-        }, 900);
+        // do not call e.preventDefault() here - let the browser submit the form
       }
 
       document.addEventListener('DOMContentLoaded', function () {
